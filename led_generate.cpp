@@ -7,11 +7,10 @@ using namespace std;
 
 int main(int argc, char **argv){
 	string input, filename, tmp;
-	vector <int *> characters;
+	vector <string *> characters;
 	vector <string> fnames;
-	int *tmp_c, i, j;
-	char **output;
-	FILE *dp;
+	string *tmp_c;
+	int i, j;
 	ifstream infile,tmpfile;
 
 	if (argc !=2) fprintf(stderr,"./generator input_string\n");
@@ -23,11 +22,11 @@ int main(int argc, char **argv){
 		tmpfile.open("characters/"+filename,ios::in);
 		if (tmpfile.is_open()) {
 			fnames.push_back(filename);
-			j=0;
-			tmp_c = new int[70];
-			for (i=0;i<70;i++)tmp_c[i]=0;
+			i=0;
+			tmp_c = new string[7];
+			//for (i=0;i<70;i++)tmp_c[i]=0;
 			while (getline(tmpfile,tmp)){
-				for (i=0; i<10; i++){
+				/*for (i=0; i<10; i++){
 					if (tmp[i]=='.') {
 						tmp_c[j]=1;
 					}
@@ -35,8 +34,11 @@ int main(int argc, char **argv){
 						tmp_c[j]=0;
 					}
 					j++;
-				}
+				}*/
+				tmp_c[i]=tmp;
+				i++;
 			}
+			i=0;
 			characters.push_back(tmp_c);
 
 			tmpfile.close();
@@ -51,10 +53,11 @@ int main(int argc, char **argv){
 		cout << fnames[i] << endl;
 		tmp_c = characters[i];
 		for (j=0; j<7;j++){
-			for (int k=0; k<10; k++){
-				cout << tmp_c[j*10+k];
-			}
-			cout << endl;
+			//for (int k=0; k<10; k++){
+			//	cout << tmp_c[j*10+k];
+			//}
+			//cout << endl;
+			cout << tmp_c[j] << endl;
 		}
 		cout << endl << endl;
 	}
