@@ -23,6 +23,12 @@ int main(int argc, char **argv){
 		fprintf(stderr,"input string can only be up to 100 characters\n");
 		exit(1);
 	}
+	
+	/*
+	 * read in all characters from files stored in
+	 * the characters directory. They define how
+	 * each character is to appear. They are all 7x10.
+	 */
 
 	infile.open("./filenames.txt",ios::in);
 	while(getline(infile,filename)){
@@ -43,7 +49,12 @@ int main(int argc, char **argv){
 		else cout << "file can't open\n";
 	}
 	infile.close();
-
+	
+	/*
+	 * build the output line by line. Since characters span multiple
+	 * lines of output you will have to build the first line with the first
+	 * line of all the characters an repeat for all 7 lines
+	 */
 	for (i=0; i<7*input.size();i++){
 		j = i/input.size();
 		k = i%input.size();
@@ -62,6 +73,10 @@ int main(int argc, char **argv){
 
 		output[j] = output[j] + characters[pos][j];
 	}
+
+	/* 
+	 * output result of previous loop line by line
+	 */
 
 	for (i=0; i<7; i++){
 		cout << output[i] << endl;
