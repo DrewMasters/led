@@ -1,4 +1,9 @@
-import Tkinter as tk
+try:
+    #python2
+    import Tkinter as tk
+except:
+    #python3
+    import tkinter as tk
 import os
 from subprocess import PIPE, check_output
 
